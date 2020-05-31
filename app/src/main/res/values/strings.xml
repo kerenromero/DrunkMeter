@@ -8,4 +8,8 @@
     <string name="music">Music</string>
     <string name="volume">Volume</string>
     <string name="todo">TODO</string>
+    <string name="warning_this_app_should_not_be_used_to_measure_whether_or_not_you_are_capable_of_driving_this_app_can_be_used_to_prove_to_your_friends_that_you_aren_t_that_drunk_and_that_you_can_definitely_out_drink_them_whether_or_not_you_should_text_your_ex_or_have_another_drink">Warning: This app should NOT be used to measure whether or not you are capable of driving.This app can be used to prove to your friends that you aren’t that drunkand that you can definitely out drink them,whether or not you should text your ex or have another drink.</string>
+    <string name="rating_system_curious_about_how_we_assign_you_your_scores_we_assign_you_your_rating_by_how_many_questions_you_answer_correctly_as_well_as_your_reaction_time_let_us_know_if_you_think_your_score_was_accurate_or_not">Rating system: Curious about how we assign you your scores? We assign you your rating by how many questions you answer correctly as well as your reaction time. Let us know if you think your score was accurate or not!</string>
+    <string name="textview">TextView</string>
+
 </resources>
