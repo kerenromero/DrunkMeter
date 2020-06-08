@@ -7,6 +7,16 @@ public class PastResEntry {
     private String time;
     private String rating;
 
+    PastResEntry(String date, String time, String rating){
+        this.date = date;
+        this.time = time;
+        this.rating = rating;
+    }
+
+    PastResEntry(){
+
+    }
+
     public void setDate (String dateInstance){
         this.date = dateInstance;
     }
@@ -17,6 +27,10 @@ public class PastResEntry {
 
     public void setRating(String ratingInstance){
         this.rating = ratingInstance;
+    }
+
+    public String getDateAndTime(){
+        return this.date + " " + this.time;
     }
 
     public String getDate() {
