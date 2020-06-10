@@ -3,6 +3,7 @@ package com.example.drunkmeter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +11,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -28,21 +33,21 @@ public class ColorGame extends AppCompatActivity {
     private long ResultTime;
     public ArrayList<Integer> ratingValues = MainActivity.ratingValues;
 
+    long timeAtStart;
     int [] picColor = {R.drawable.red, R.drawable.blue, R.drawable.green, R.drawable.orange};
     String [] picColorStr = {"R.drawable.red", "R.drawable.blue", "R.drawable.green", "R.drawable.orange"};
     String [] strColor = {"Click on the Red button", "Click on the Blue button", "Click on the Orange button", "Click on the Green button"};
-    //color you see
-    //String [] seeColor = {"TextView2.setTextColor(Color.RED)","TextView2.setTextColor(Color.BLUE)", "TextView2.setTextColor(Color.GREEN)","TextView2.setTextColor(Color.parseColor(\"#FFA500\"))"};
     int [] seeColor = {Color.RED, Color.BLUE, Color.GREEN, Color.parseColor("#FFA500")};
+
     Map<String, String> TextToPic = new HashMap<String, String>();
     Map<String, String> ButtonToRandomImage = new HashMap<String, String>();
-    Map<String, String> wordWithColor = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_game);
 
+        timeAtStart = MainActivity.timer.getTime();
         button5 = (ImageButton)findViewById(R.id.imageButton5);
         button6 = (ImageButton)findViewById(R.id.imageButton6);
         button7 = (ImageButton)findViewById(R.id.imageButton7);
@@ -69,6 +74,7 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
+                setEntries();
                 callBack();
             }
         });
@@ -85,6 +91,7 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
+                setEntries();
                 callBack();
             }
         });
@@ -101,6 +108,7 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
+                setEntries();
                 callBack();
             }
         });
@@ -117,6 +125,7 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
+                setEntries();
                 callBack();
             }
         });
@@ -169,22 +178,22 @@ public class ColorGame extends AppCompatActivity {
     public void stopTimer(boolean trueOrfalse){
 
         if(trueOrfalse == true){
-            int finishedGame = (int) ResultTime;
-            if(finishedGame < 3 ){
-                ratingValues.add(1);
-            }
-            else if(finishedGame < 4){
-                ratingValues.add(2);
+            int finishedGame = (int) ResultTime -(int) timeAtStart;
+            if(finishedGame < 4 ){
+                ratingValues.add(0);
             }
             else if(finishedGame < 5){
-                ratingValues.add(3);
+                ratingValues.add(1);
+            }
+            else if(finishedGame < 6){
+                ratingValues.add(2);
             }
             else{
-                ratingValues.add(4);
+                ratingValues.add(3);
             }
         }
         else{
-            ratingValues.add(4);
+            ratingValues.add(3);
 
         }
 
@@ -195,4 +204,32 @@ public class ColorGame extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(MainActivity.PastResultEntries);
+        editor.putString("Past Entries List", json);
+        editor.apply();
+    }
+
+    public void setEntries(){
+        PastResEntry newEntry= new PastResEntry();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
+        Date date = new Date();
+        newEntry.setDate(formatter.format(date));
+
+        formatter = new SimpleDateFormat("HH:mm");
+        date = new Date();
+        newEntry.setTime(formatter.format(date));
+        //Still need to do the rating
+        newEntry.setRating("69");
+        Log.v(TAG, "set entries");
+        MainActivity.PastResultEntries.add(newEntry);
+        saveData();
+        Log.v(TAG, "after set entries");
+    }
+
 }

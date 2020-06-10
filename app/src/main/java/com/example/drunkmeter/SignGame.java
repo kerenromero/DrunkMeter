@@ -33,8 +33,6 @@ public class SignGame extends AppCompatActivity {
 
    // static MainActivity.MyCountDownTimer timer = MainActivity.timer;
 
-
-    public static ArrayList<PastResEntry> PastResultEntries = MainActivity.PastResultEntries;
     public ArrayList<Integer>ratingValues = MainActivity.ratingValues;
 
     int [] picSign = {R.drawable.div, R.drawable.mult, R.drawable.plus, R.drawable.sub};
@@ -79,7 +77,6 @@ public class SignGame extends AppCompatActivity {
                     TextView1.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
 
             }
@@ -99,7 +96,6 @@ public class SignGame extends AppCompatActivity {
                     TextView1.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
 
             }
@@ -119,7 +115,6 @@ public class SignGame extends AppCompatActivity {
                     TextView1.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
 
             }
@@ -139,32 +134,10 @@ public class SignGame extends AppCompatActivity {
                     TextView1.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
             }
         });
 
-    }
-
-    public ArrayList<PastResEntry> getList(){
-        return PastResultEntries;
-    }
-
-    public void setEntries(){
-        PastResEntry newEntry= new PastResEntry();
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
-        Date date = new Date();
-        newEntry.setDate(formatter.format(date));
-
-        formatter = new SimpleDateFormat("HH:mm");
-        date = new Date();
-        newEntry.setTime(formatter.format(date));
-        //Still need to do the rating
-        newEntry.setRating("69");
-        Log.v(TAG, "set entries");
-        PastResultEntries.add(newEntry);
-        Log.v(TAG, "after set entries");
     }
 
     public void stopTimer(boolean trueOrfalse){

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ColorGame"></activity>
+        <activity android:name=".ResultPage"></activity>
+        <activity android:name=".ColorGame" />
         <activity android:name=".SignGame" />
         <activity android:name=".Info" />
         <activity android:name=".Settings" />
