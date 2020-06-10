@@ -15,12 +15,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class SignGame extends AppCompatActivity {
 
-    private static final String TAG = "Game";
+    private static final String TAG = "Sign Game";
 
     private ImageButton button1;
     private ImageButton button2;
@@ -32,13 +31,15 @@ public class SignGame extends AppCompatActivity {
 
     private long ResultTime;
 
-    public static ArrayList<PastResEntry> PastResultEntries = Begin_Test.PastResultEntries;
-    public ArrayList<Integer>ratingValues = Begin_Test.ratingValues;
+   // static MainActivity.MyCountDownTimer timer = MainActivity.timer;
+
+
+    public static ArrayList<PastResEntry> PastResultEntries = MainActivity.PastResultEntries;
+    public ArrayList<Integer>ratingValues = MainActivity.ratingValues;
 
     int [] picSign = {R.drawable.div, R.drawable.mult, R.drawable.plus, R.drawable.sub};
     String [] picSignStr = {"R.drawable.div", "R.drawable.mult", "R.drawable.plus", "R.drawable.sub"};
     String [] strSign = {"Click on the Division sign", "Click on the Multiplication sign", "Click on the Addition sign", "Click on the Subtraction sign" };
-
     Map<String, String> TextToPic = new HashMap<String, String>();
     Map<String, String> ButtonToRandomImage = new HashMap<String, String>();
 
@@ -49,17 +50,6 @@ public class SignGame extends AppCompatActivity {
         setContentView(R.layout.activity_sign_game);
 
         Log.e(TAG, "onCreate: after on create ");
-
-        Timer myTimer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                TimerValue.setText(String.valueOf(ResultTime));
-                ResultTime++;
-            }
-        };
-
-        myTimer.scheduleAtFixedRate(task, 1000,1000);
 
         TimerValue = (TextView)findViewById(R.id.timer);
         button1 = (ImageButton)findViewById(R.id.imageButton);
@@ -73,45 +63,14 @@ public class SignGame extends AppCompatActivity {
         TextToPic.put("Click on the Addition sign", "R.drawable.plus");
         TextToPic.put("Click on the Subtraction sign", "R.drawable.sub");
 
-        Random rand = new Random();
-        int len = picSign.length;
-        final int randNumString = rand.nextInt(strSign.length);
-        TextView1.setText(strSign[randNumString]);
-
-        for(int i = 0; i < picSign.length; i++){
-            int randNum = rand.nextInt(len);
-            int randomImage = picSign[randNum];
-            if(i == 0) {
-                button1.setImageResource(randomImage);
-                ButtonToRandomImage.put("button1", picSignStr[randNum]);
-            }
-            if(i == 1) {
-                button2.setImageResource(randomImage);
-                ButtonToRandomImage.put("button2", picSignStr[randNum]);
-            }
-            if(i == 2) {
-                button3.setImageResource(randomImage);
-                ButtonToRandomImage.put("button3", picSignStr[randNum]);
-            }
-            if(i == 3) {
-                button4.setImageResource(randomImage);
-                ButtonToRandomImage.put("button4", picSignStr[randNum]);
-            }
-
-            int temp = picSign[randNum];
-            picSign[randNum] = picSign[len-1];
-            picSign[len-1] = temp;
-
-            String temp2 = picSignStr[randNum];
-            picSignStr[randNum] = picSignStr[len-1];
-            picSignStr[len-1] = temp2;
-            len--;
-        }
+        final int randNumString = mapButtonToImage();
 
         Log.e(TAG, "onCreate: before on click ");
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e(TAG, "onClick: "+ MainActivity.timer.getTime());
+                ResultTime = MainActivity.timer.getTime();
                 if (TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button1")) {
                     stopTimer(true);
                     TextView1.setText("Its correct");
@@ -129,6 +88,8 @@ public class SignGame extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e(TAG, "onClick: "+ MainActivity.timer.getTime());
+                ResultTime = MainActivity.timer.getTime();
                 if(TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button2")){
                     stopTimer(true);
                     TextView1.setText("Its correct");
@@ -147,6 +108,8 @@ public class SignGame extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e(TAG, "onClick: "+ MainActivity.timer.getTime());
+                ResultTime = MainActivity.timer.getTime();
                 if(TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button3")){
                     stopTimer(true);
                     TextView1.setText("Its correct");
@@ -165,6 +128,8 @@ public class SignGame extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e(TAG, "onClick: "+ MainActivity.timer.getTime());
+                ResultTime = MainActivity.timer.getTime();
                 if(TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button4")){
                     stopTimer(true);
                     TextView1.setText("Its correct");
@@ -227,8 +192,47 @@ public class SignGame extends AppCompatActivity {
     }
 
     public void callBack(){
-        Intent intent = new Intent(SignGame.this, Begin_Test.class);
+        Intent intent = new Intent(SignGame.this, ColorGame.class);
         startActivity(intent);
+    }
+
+    public int mapButtonToImage(){
+
+        Random rand = new Random();
+        int len = picSign.length;
+        final int randNumString = rand.nextInt(strSign.length);
+        TextView1.setText(strSign[randNumString]);
+
+        for(int i = 0; i < picSign.length; i++){
+            int randNum = rand.nextInt(len);
+            int randomImage = picSign[randNum];
+            if(i == 0) {
+                button1.setImageResource(randomImage);
+                ButtonToRandomImage.put("button1", picSignStr[randNum]);
+            }
+            if(i == 1) {
+                button2.setImageResource(randomImage);
+                ButtonToRandomImage.put("button2", picSignStr[randNum]);
+            }
+            if(i == 2) {
+                button3.setImageResource(randomImage);
+                ButtonToRandomImage.put("button3", picSignStr[randNum]);
+            }
+            if(i == 3) {
+                button4.setImageResource(randomImage);
+                ButtonToRandomImage.put("button4", picSignStr[randNum]);
+            }
+
+            int temp = picSign[randNum];
+            picSign[randNum] = picSign[len-1];
+            picSign[len-1] = temp;
+
+            String temp2 = picSignStr[randNum];
+            picSignStr[randNum] = picSignStr[len-1];
+            picSignStr[len-1] = temp2;
+            len--;
+        }
+        return randNumString;
     }
 }
 

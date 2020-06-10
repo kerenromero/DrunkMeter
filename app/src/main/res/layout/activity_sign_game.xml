@@ -67,6 +67,7 @@
         android:layout_width="229dp"
         android:layout_height="70dp"
         android:text="sign"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

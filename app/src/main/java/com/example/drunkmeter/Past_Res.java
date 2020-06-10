@@ -23,7 +23,7 @@ public class Past_Res extends AppCompatActivity {
 
         listView = (ListView)findViewById(R.id.ListView);
 
-        PastResultEntries = Begin_Test.PastResultEntries;
+        PastResultEntries = MainActivity.PastResultEntries;
 
         EntriesAdapter adapter = new EntriesAdapter(this, R.layout.listview_layout, PastResultEntries);
         listView.setAdapter(adapter);
