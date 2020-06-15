@@ -50,6 +50,7 @@ public class SignGame extends AppCompatActivity {
         Log.e(TAG, "onCreate: after on create ");
 
         TimerValue = (TextView)findViewById(R.id.timer);
+
         button1 = (ImageButton)findViewById(R.id.imageButton);
         button2 = (ImageButton)findViewById(R.id.imageButton2);
         button3 = (ImageButton)findViewById(R.id.imageButton3);

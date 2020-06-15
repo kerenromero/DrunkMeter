@@ -29,6 +29,8 @@ public class ColorGame extends AppCompatActivity {
     private ImageButton button7;
     private ImageButton button8;
     private TextView TextView2;
+    private TextView TimerValue;
+
 
     private long ResultTime;
 //    public ArrayList<Integer> ratingValues = MainActivity.ratingValues;
@@ -53,6 +55,9 @@ public class ColorGame extends AppCompatActivity {
         button7 = (ImageButton)findViewById(R.id.imageButton7);
         button8 = (ImageButton)findViewById(R.id.imageButton8);
         TextView2 = (TextView)findViewById(R.id.textView2);
+
+        TimerValue = (TextView)findViewById(R.id.timer1);
+
 
         TextToPic.put("Click on the Red button", "R.drawable.red");
         TextToPic.put("Click on the Blue button", "R.drawable.blue");
