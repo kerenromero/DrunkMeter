@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -30,10 +27,6 @@ public class SignGame extends AppCompatActivity {
     private TextView TimerValue;
 
     private long ResultTime;
-
-   // static MainActivity.MyCountDownTimer timer = MainActivity.timer;
-
-    // public ArrayList<Integer>ratingValues = MainActivity.ratingValues;
 
     int [] picSign = {R.drawable.div, R.drawable.mult, R.drawable.plus, R.drawable.sub};
     String [] picSignStr = {"R.drawable.div", "R.drawable.mult", "R.drawable.plus", "R.drawable.sub"};

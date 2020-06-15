@@ -33,7 +33,6 @@ public class ColorGame extends AppCompatActivity {
 
 
     private long ResultTime;
-//    public ArrayList<Integer> ratingValues = MainActivity.ratingValues;
 
     long timeAtStart;
     int [] picColor = {R.drawable.red, R.drawable.blue, R.drawable.green, R.drawable.orange};
