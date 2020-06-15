@@ -31,7 +31,7 @@ public class ColorGame extends AppCompatActivity {
     private TextView TextView2;
 
     private long ResultTime;
-    public ArrayList<Integer> ratingValues = MainActivity.ratingValues;
+//    public ArrayList<Integer> ratingValues = MainActivity.ratingValues;
 
     long timeAtStart;
     int [] picColor = {R.drawable.red, R.drawable.blue, R.drawable.green, R.drawable.orange};
@@ -74,7 +74,6 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
             }
         });
@@ -91,7 +90,6 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
             }
         });
@@ -108,7 +106,6 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
             }
         });
@@ -125,7 +122,6 @@ public class ColorGame extends AppCompatActivity {
                     TextView2.setText("Not correct");
 
                 }
-                setEntries();
                 callBack();
             }
         });
@@ -178,58 +174,32 @@ public class ColorGame extends AppCompatActivity {
     public void stopTimer(boolean trueOrfalse){
 
         if(trueOrfalse == true){
-            int finishedGame = (int) ResultTime -(int) timeAtStart;
+            int finishedGame = (int) ResultTime - (int) timeAtStart;
             if(finishedGame < 4 ){
-                ratingValues.add(0);
+                MainActivity.ratingValues.add(0);
             }
             else if(finishedGame < 5){
-                ratingValues.add(1);
+                MainActivity.ratingValues.add(1);
             }
             else if(finishedGame < 6){
-                ratingValues.add(2);
+                MainActivity.ratingValues.add(2);
             }
             else{
-                ratingValues.add(3);
+                MainActivity.ratingValues.add(3);
             }
         }
         else{
-            ratingValues.add(3);
+            MainActivity.ratingValues.add(3);
 
         }
 
     }
 
     public void callBack(){
-        Intent intent = new Intent(ColorGame.this, MainActivity.class);
+        Intent intent = new Intent(ColorGame.this, AlphabetGame.class);
         startActivity(intent);
-
     }
 
-    public void saveData(){
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(MainActivity.PastResultEntries);
-        editor.putString("Past Entries List", json);
-        editor.apply();
-    }
 
-    public void setEntries(){
-        PastResEntry newEntry= new PastResEntry();
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM");
-        Date date = new Date();
-        newEntry.setDate(formatter.format(date));
-
-        formatter = new SimpleDateFormat("HH:mm");
-        date = new Date();
-        newEntry.setTime(formatter.format(date));
-        //Still need to do the rating
-        newEntry.setRating("69");
-        Log.v(TAG, "set entries");
-        MainActivity.PastResultEntries.add(newEntry);
-        saveData();
-        Log.v(TAG, "after set entries");
-    }
 
 }

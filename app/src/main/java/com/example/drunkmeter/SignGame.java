@@ -33,7 +33,7 @@ public class SignGame extends AppCompatActivity {
 
    // static MainActivity.MyCountDownTimer timer = MainActivity.timer;
 
-    public ArrayList<Integer>ratingValues = MainActivity.ratingValues;
+    // public ArrayList<Integer>ratingValues = MainActivity.ratingValues;
 
     int [] picSign = {R.drawable.div, R.drawable.mult, R.drawable.plus, R.drawable.sub};
     String [] picSignStr = {"R.drawable.div", "R.drawable.mult", "R.drawable.plus", "R.drawable.sub"};
@@ -145,20 +145,20 @@ public class SignGame extends AppCompatActivity {
         if(trueOrfalse == true){
             int finishedGame = (int) ResultTime;
             if(finishedGame < 3 ){
-                ratingValues.add(1);
+                MainActivity.ratingValues.add(1);
             }
             else if(finishedGame < 4){
-                ratingValues.add(2);
+                MainActivity.ratingValues.add(2);
             }
             else if(finishedGame < 5){
-                ratingValues.add(3);
+                MainActivity.ratingValues.add(3);
             }
             else{
-                ratingValues.add(4);
+                MainActivity.ratingValues.add(4);
             }
         }
         else{
-            ratingValues.add(4);
+            MainActivity.ratingValues.add(4);
 
         }
 
