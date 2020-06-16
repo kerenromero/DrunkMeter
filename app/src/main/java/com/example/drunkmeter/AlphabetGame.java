@@ -28,7 +28,7 @@ public class AlphabetGame extends AppCompatActivity {
     private Button button4;
 
     private TextView TextView4;
-    private TextView TimerValue;
+    public static TextView TimerValue;
 
 
     int max = 23;
@@ -49,6 +49,8 @@ public class AlphabetGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alphabet_game);
+
+        MainActivity.timer.setViewableTime("AlphabetGame");
 
         timeAtStart = MainActivity.timer.getTime();
         button1 = (Button)findViewById(R.id.button);
@@ -220,13 +222,13 @@ public class AlphabetGame extends AppCompatActivity {
 
         if(trueOrfalse == true){
             int finishedGame = (int) ResultTime - (int) timeAtStart;
-            if(finishedGame < 5 ){
+            if(finishedGame < 8){
                 MainActivity.ratingValues.add(0);
             }
-            else if(finishedGame < 6){
+            else if(finishedGame < 9){
                 MainActivity.ratingValues.add(1);
             }
-            else if(finishedGame < 7){
+            else if(finishedGame < 10){
                 MainActivity.ratingValues.add(2);
             }
             else{
@@ -265,16 +267,16 @@ public class AlphabetGame extends AppCompatActivity {
         newEntry.setTime(formatter.format(date));
 
         int averageRating = (MainActivity.ratingValues.get(0) + MainActivity.ratingValues.get(1) + MainActivity.ratingValues.get(2));
-        if(averageRating < 2){
+        if(averageRating < 3){
             newEntry.setRating("Night just started");
         }
-        else if(averageRating < 3){
+        else if(averageRating < 5){
             newEntry.setRating("Vibing");
         }
-        else if(averageRating < 6){
+        else if(averageRating < 7){
             newEntry.setRating("Big Chilling");
         }
-        else if(averageRating < 8){
+        else if(averageRating < 9){
             newEntry.setRating("Should I text my ex");
         }
         else{

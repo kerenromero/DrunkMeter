@@ -47,20 +47,7 @@ public class ResultPage extends AppCompatActivity {
             }
         });
 
-        int averageRating = (MainActivity.ratingValues.get(0) + MainActivity.ratingValues.get(1))/2;
-
-        if(averageRating < 1){
-            textView3.setText("Night just started");
-        }
-        else if(averageRating < 2){
-            textView3.setText("Vibing");
-        }
-        else if(averageRating < 3){
-            textView3.setText("Biiig Chillin");
-        }
-        else{
-            textView3.setText("Too Drunk");
-        }
+        textView3.setText(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating());
 
     }
 

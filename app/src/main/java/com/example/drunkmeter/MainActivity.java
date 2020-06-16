@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         beginTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timer.start();
                 Intent intent = new Intent(MainActivity.this, SignGame.class);
                 startActivity(intent);
                 Log.d(TAG, "After intent: " + timer.getTime());
@@ -84,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     public class MyCountDownTimer extends CountDownTimer {
 
         private long time;
+        private String activityName;
 
         public MyCountDownTimer(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
@@ -94,6 +94,17 @@ public class MainActivity extends AppCompatActivity {
             time = (totalSeconds * 1000 - millisUntilFinished) / 1000;
             Log.d(TAG, "Elapsed: " + (totalSeconds * 1000 - millisUntilFinished) / 1000);
             int progress = (int) (millisUntilFinished/1000);
+
+            if(activityName == "SignGame"){
+                SignGame.TimerValue.setText(String.valueOf((int) ((totalSeconds * 1000 - millisUntilFinished) / 1000)));
+            }
+            if(activityName == "ColorGame"){
+                ColorGame.TimerValue.setText(String.valueOf((int) ((totalSeconds * 1000 - millisUntilFinished) / 1000)));
+
+            }
+            if(activityName == "AlphabetGame"){
+                AlphabetGame.TimerValue.setText(String.valueOf((int) ((totalSeconds * 1000 - millisUntilFinished) / 1000)));
+            }
         }
 
         @Override
@@ -105,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
             return time;
         }
 
+        public void setViewableTime(String activityName){
+            this.activityName = activityName;
+        }
 
     }
 

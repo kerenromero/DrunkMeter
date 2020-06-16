@@ -29,7 +29,7 @@ public class ColorGame extends AppCompatActivity {
     private ImageButton button7;
     private ImageButton button8;
     private TextView TextView2;
-    private TextView TimerValue;
+    public static TextView TimerValue;
 
 
     private long ResultTime;
@@ -48,6 +48,7 @@ public class ColorGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_game);
 
+        MainActivity.timer.setViewableTime("ColorGame");
         timeAtStart = MainActivity.timer.getTime();
         button5 = (ImageButton)findViewById(R.id.imageButton5);
         button6 = (ImageButton)findViewById(R.id.imageButton6);
@@ -179,13 +180,13 @@ public class ColorGame extends AppCompatActivity {
 
         if(trueOrfalse == true){
             int finishedGame = (int) ResultTime - (int) timeAtStart;
-            if(finishedGame < 4 ){
+            if(finishedGame < 3){
                 MainActivity.ratingValues.add(0);
             }
             else if(finishedGame < 5){
                 MainActivity.ratingValues.add(1);
             }
-            else if(finishedGame < 6){
+            else if(finishedGame < 7){
                 MainActivity.ratingValues.add(2);
             }
             else{

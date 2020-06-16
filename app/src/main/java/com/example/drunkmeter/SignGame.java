@@ -24,7 +24,7 @@ public class SignGame extends AppCompatActivity {
     private ImageButton button4;
 
     private TextView TextView1;
-    private TextView TimerValue;
+    public static TextView TimerValue;
 
     private long ResultTime;
 
@@ -39,7 +39,8 @@ public class SignGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_game);
-
+        MainActivity.timer.start();
+        MainActivity.timer.setViewableTime("SignGame");
         Log.e(TAG, "onCreate: after on create ");
 
         TimerValue = (TextView)findViewById(R.id.timer);
@@ -135,16 +136,16 @@ public class SignGame extends AppCompatActivity {
     }
 
     public void stopTimer(boolean trueOrfalse){
-
+        MainActivity.ratingValues.clear();
         if(trueOrfalse == true){
             int finishedGame = (int) ResultTime;
-            if(finishedGame < 3 ){
+            if(finishedGame < 2){
                 MainActivity.ratingValues.add(1);
             }
             else if(finishedGame < 4){
                 MainActivity.ratingValues.add(2);
             }
-            else if(finishedGame < 5){
+            else if(finishedGame < 6){
                 MainActivity.ratingValues.add(3);
             }
             else{
