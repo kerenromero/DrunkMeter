@@ -73,7 +73,7 @@ public class ColorGame extends AppCompatActivity {
                 ResultTime = MainActivity.timer.getTime();
                 if (TextToPic.get(strColor[randNumString]) == ButtonToRandomImage.get("button5")) {
                     stopTimer(true);
-                    TextView2.setText("Its correct");
+                    TextView2.setText("Correct");
                 } else {
                     stopTimer(false);
                     TextView2.setText("Not correct");
@@ -89,7 +89,7 @@ public class ColorGame extends AppCompatActivity {
                 ResultTime = MainActivity.timer.getTime();
                 if (TextToPic.get(strColor[randNumString]) == ButtonToRandomImage.get("button6")) {
                     stopTimer(true);
-                    TextView2.setText("Its correct");
+                    TextView2.setText("Correct");
                 } else {
                     stopTimer(false);
                     TextView2.setText("Not correct");
@@ -105,7 +105,7 @@ public class ColorGame extends AppCompatActivity {
                 ResultTime = MainActivity.timer.getTime();
                 if (TextToPic.get(strColor[randNumString]) == ButtonToRandomImage.get("button7")) {
                     stopTimer(true);
-                    TextView2.setText("Its correct");
+                    TextView2.setText("Correct");
                 } else {
                     stopTimer(false);
                     TextView2.setText("Not correct");
@@ -180,13 +180,13 @@ public class ColorGame extends AppCompatActivity {
 
         if(trueOrfalse == true){
             int finishedGame = (int) ResultTime - (int) timeAtStart;
-            if(finishedGame < 3){
+            if(finishedGame <= 2){
                 MainActivity.ratingValues.add(0);
             }
-            else if(finishedGame < 5){
+            else if(finishedGame <= 4){
                 MainActivity.ratingValues.add(1);
             }
-            else if(finishedGame < 7){
+            else if(finishedGame <= 6){
                 MainActivity.ratingValues.add(2);
             }
             else{

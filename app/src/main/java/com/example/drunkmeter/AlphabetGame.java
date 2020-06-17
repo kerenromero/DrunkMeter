@@ -267,16 +267,16 @@ public class AlphabetGame extends AppCompatActivity {
         newEntry.setTime(formatter.format(date));
 
         int averageRating = (MainActivity.ratingValues.get(0) + MainActivity.ratingValues.get(1) + MainActivity.ratingValues.get(2));
-        if(averageRating < 3){
+        if(averageRating <= 4){
             newEntry.setRating("Night just started");
         }
-        else if(averageRating < 5){
+        else if(averageRating <= 6){
             newEntry.setRating("Vibing");
         }
-        else if(averageRating < 7){
+        else if(averageRating <= 8){
             newEntry.setRating("Big Chilling");
         }
-        else if(averageRating < 9){
+        else if(averageRating <= 10){
             newEntry.setRating("Should I text my ex");
         }
         else{
@@ -284,7 +284,7 @@ public class AlphabetGame extends AppCompatActivity {
         }
 
         Log.v(TAG, "set entries");
-        MainActivity.PastResultEntries.add(newEntry);
+        MainActivity.PastResultEntries.add(0,newEntry);
         saveData();
         Log.v(TAG, "after set entries");
     }

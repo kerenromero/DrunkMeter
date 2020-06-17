@@ -66,7 +66,7 @@ public class SignGame extends AppCompatActivity {
                 ResultTime = MainActivity.timer.getTime();
                 if (TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button1")) {
                     stopTimer(true);
-                    TextView1.setText("Its correct");
+                    TextView1.setText("Correct");
                 } else {
                     stopTimer(false);
                     TextView1.setText("Not correct");
@@ -84,7 +84,7 @@ public class SignGame extends AppCompatActivity {
                 ResultTime = MainActivity.timer.getTime();
                 if(TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button2")){
                     stopTimer(true);
-                    TextView1.setText("Its correct");
+                    TextView1.setText("Correct");
                 }
                 else{
                     stopTimer(false);
@@ -103,7 +103,7 @@ public class SignGame extends AppCompatActivity {
                 ResultTime = MainActivity.timer.getTime();
                 if(TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button3")){
                     stopTimer(true);
-                    TextView1.setText("Its correct");
+                    TextView1.setText("Correct");
                 }
                 else{
                     stopTimer(false);
@@ -122,7 +122,7 @@ public class SignGame extends AppCompatActivity {
                 ResultTime = MainActivity.timer.getTime();
                 if(TextToPic.get(strSign[randNumString]) == ButtonToRandomImage.get("button4")){
                     stopTimer(true);
-                    TextView1.setText("Its correct");
+                    TextView1.setText("Correct");
                 }
                 else{
                     stopTimer(false);
@@ -139,13 +139,13 @@ public class SignGame extends AppCompatActivity {
         MainActivity.ratingValues.clear();
         if(trueOrfalse == true){
             int finishedGame = (int) ResultTime;
-            if(finishedGame < 2){
+            if(finishedGame <= 2){
                 MainActivity.ratingValues.add(1);
             }
-            else if(finishedGame < 4){
+            else if(finishedGame <= 4){
                 MainActivity.ratingValues.add(2);
             }
-            else if(finishedGame < 6){
+            else if(finishedGame <= 6){
                 MainActivity.ratingValues.add(3);
             }
             else{

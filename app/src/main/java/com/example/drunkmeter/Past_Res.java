@@ -28,10 +28,6 @@ public class Past_Res extends AppCompatActivity {
         EntriesAdapter adapter = new EntriesAdapter(this, R.layout.listview_layout, PastResultEntries);
         listView.setAdapter(adapter);
 
-
-
-        
-
     }
 
 }
