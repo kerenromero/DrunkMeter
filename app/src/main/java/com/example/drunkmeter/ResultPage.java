@@ -4,16 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 public class ResultPage extends AppCompatActivity {
 
+    private static final String TAG = "omg";
     private ImageView imageView;
     private TextView textView3;
     private RatingBar ratingBar;
@@ -30,6 +30,8 @@ public class ResultPage extends AppCompatActivity {
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         playAgain = (Button)findViewById(R.id.playAgain);
         returnHome = (Button)findViewById(R.id.returnHome);
+
+
 
         playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +50,29 @@ public class ResultPage extends AppCompatActivity {
         });
 
         textView3.setText(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating());
+        Log.e(TAG, "onCreate: " + MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating());
+        if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Night just started")){
+            imageView.setImageResource(R.drawable.nightjuststarted);
+            ratingBar.setRating(1);
+        }
+        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Vibing")){
+            imageView.setImageResource(R.drawable.vibing);
+            ratingBar.setRating(2);
+        }
+        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Big Chilling")){
+            imageView.setImageResource(R.drawable.bigchilling);
+            ratingBar.setRating(3);
+        }
+        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Should I text my ex")){
+            imageView.setImageResource(R.drawable.shoulditextmyex);
+            ratingBar.setRating(4);
+        }
+        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Shit Faced")){
+            imageView.setImageResource(R.drawable.shitfaced);
+            ratingBar.setRating(5);
+        }
+
+
 
     }
 

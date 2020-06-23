@@ -1,63 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultPage">
+    tools:context=".ResultPage"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="138dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
         android:layout_height="106dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="178dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
         android:layout_height="53dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="45dp"
         android:text="TextView"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:gravity="center"
+        android:textSize="45dp"
+        />
 
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
-        app:layout_constraintBottom_toTopOf="@+id/playAgain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="50dp"
+        android:numStars="5"
+        android:layout_marginLeft="85dp"
+        android:progressDrawable="@drawable/ic_custom_star"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:stepSize="0.5" />
 
-    <Button
-        android:id="@+id/playAgain"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginBottom="120dp"
-        android:text="Play Again"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/returnHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:text="Return Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toEndOf="@+id/playAgain" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/playAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="84dp"
+            android:layout_marginLeft="84dp"
+            android:layout_marginBottom="120dp"
+            android:text="Play Again"
+             />
+
+        <Button
+            android:id="@+id/returnHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:text="Return Home"
+            android:layout_marginLeft="35dp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
