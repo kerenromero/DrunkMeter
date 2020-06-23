@@ -58,7 +58,6 @@ public class ColorGame extends AppCompatActivity {
 
         TimerValue = (TextView)findViewById(R.id.timer1);
 
-
         TextToPic.put("Click on the Red button", "R.drawable.red");
         TextToPic.put("Click on the Blue button", "R.drawable.blue");
         TextToPic.put("Click on the Orange button", "R.drawable.orange");
@@ -130,8 +129,6 @@ public class ColorGame extends AppCompatActivity {
                 callBack();
             }
         });
-
-
     }
 
     public int mapButtonToImage(){
