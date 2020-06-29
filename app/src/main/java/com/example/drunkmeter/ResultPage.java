@@ -49,25 +49,26 @@ public class ResultPage extends AppCompatActivity {
             }
         });
 
-        textView3.setText(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating());
-        Log.e(TAG, "onCreate: " + MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating());
-        if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Night just started")){
+        textView3.setText(MainActivity.PastResultEntries.get(0).getRating());
+        Log.e(TAG, "onCreate: " + MainActivity.PastResultEntries.get(0).getRating());
+
+        if(MainActivity.PastResultEntries.get(0).getRating().equals("Night just started")){
             imageView.setImageResource(R.drawable.nightjuststarted);
             ratingBar.setRating(1);
         }
-        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Vibing")){
+        else if(MainActivity.PastResultEntries.get(0).getRating().equals("Vibing")){
             imageView.setImageResource(R.drawable.vibing);
             ratingBar.setRating(2);
         }
-        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Big Chilling")){
+        else if(MainActivity.PastResultEntries.get(0).getRating().equals("Big Chilling")){
             imageView.setImageResource(R.drawable.bigchilling);
             ratingBar.setRating(3);
         }
-        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Should I text my ex")){
+        else if(MainActivity.PastResultEntries.get(0).getRating().equals("Should I text my ex")){
             imageView.setImageResource(R.drawable.shoulditextmyex);
             ratingBar.setRating(4);
         }
-        else if(MainActivity.PastResultEntries.get(MainActivity.PastResultEntries.size()-1).getRating().equals("Shit Faced")){
+        else if(MainActivity.PastResultEntries.get(0).getRating().equals("Shit Faced")){
             imageView.setImageResource(R.drawable.shitfaced);
             ratingBar.setRating(5);
         }

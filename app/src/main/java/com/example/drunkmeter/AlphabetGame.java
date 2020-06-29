@@ -30,7 +30,6 @@ public class AlphabetGame extends AppCompatActivity {
     private TextView TextView4;
     public static TextView TimerValue;
 
-
     int max = 23;
     int min = 2;
     String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -68,6 +67,7 @@ public class AlphabetGame extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ResultTime = MainActivity.timer.getTime();
+                MainActivity.timer.cancel();
                 if(randBorA == 0){
                     if(buttonToChar.get("button1") == alphabet.charAt(randChar-1)){
                         TextView4.setText("Correct");
@@ -97,6 +97,7 @@ public class AlphabetGame extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ResultTime = MainActivity.timer.getTime();
+                MainActivity.timer.cancel();
                 if(randBorA == 0){
                     if(buttonToChar.get("button2") == alphabet.charAt(randChar-1)){
                         TextView4.setText("Correct");
@@ -127,6 +128,8 @@ public class AlphabetGame extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ResultTime = MainActivity.timer.getTime();
+                MainActivity.timer.cancel();
+
                 if(randBorA == 0){
                     if(buttonToChar.get("button3") == alphabet.charAt(randChar-1)){
                         TextView4.setText("Correct");
@@ -156,6 +159,8 @@ public class AlphabetGame extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ResultTime = MainActivity.timer.getTime();
+                MainActivity.timer.cancel();
+
                 if(randBorA == 0){
                     if(buttonToChar.get("button4") == alphabet.charAt(randChar-1)){
                         TextView4.setText("Correct");
@@ -256,7 +261,7 @@ public class AlphabetGame extends AppCompatActivity {
     }
 
     public void setEntries(){
-        PastResEntry newEntry= new PastResEntry();
+        PastResEntry newEntry = new PastResEntry();
 
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd");
         Date date = new Date();
@@ -267,6 +272,7 @@ public class AlphabetGame extends AppCompatActivity {
         newEntry.setTime(formatter.format(date));
 
         int averageRating = (MainActivity.ratingValues.get(0) + MainActivity.ratingValues.get(1) + MainActivity.ratingValues.get(2));
+        Log.e(TAG, "setEntries: " + averageRating );
         if(averageRating <= 4){
             newEntry.setRating("Night just started");
         }
